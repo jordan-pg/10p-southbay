@@ -18,3 +18,5 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PSB_WEBSITE_303523 }}'
           channelId: live
           projectId: psb-website-303523
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
