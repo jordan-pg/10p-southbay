@@ -12,7 +12,7 @@ import { styled } from "@mui/system";
 const TestimonialsSection = styled(Box)`
 	padding: 40px;
 	text-align: center;
-	height: 80vh;
+	min-height: 80vh;
 `;
 
 const TestimonialAvatar = styled(Avatar)`
@@ -35,19 +35,18 @@ function Testimonials() {
 			>
 				SATISFIED CUSTOMERS
 			</Typography>
-			<Grid container spacing={2}>
+			<Grid container spacing={2} mt={3}>
 				<Grid item xs={12} sm={4}>
 					<Card sx={{ height: "100%" }}>
 						<CardContent>
-							<TestimonialAvatar
-								alt="Person 1"
-								src="/avatar1.jpg"
-							/>
-							<Typography variant="h6">John Doe</Typography>
+							<TestimonialAvatar alt="Jordan" src="/jordan.jpg" />
+							<Typography variant="h6">Jordan Griffin</Typography>
 							<Typography variant="body1">
-								"Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit. Sed aliquam arcu vitae lorem
-								condimentum viverra."
+								"This gym is awesome! The instructors are
+								top-notch and create a supportive environment.
+								It feels like a big family, everyone is friendly
+								and welcoming. Whether you're a beginner or
+								experienced, this place has got your back."
 							</Typography>
 						</CardContent>
 					</Card>
@@ -55,15 +54,18 @@ function Testimonials() {
 				<Grid item xs={12} sm={4}>
 					<Card sx={{ height: "100%" }}>
 						<CardContent>
-							<TestimonialAvatar
-								alt="Person 2"
-								src="/avatar2.jpg"
-							/>
-							<Typography variant="h6">Jane Smith</Typography>
+							<TestimonialAvatar alt="Joey" src="/joey.jpg" />
+							<Typography variant="h6">
+								Joey Balistreri
+							</Typography>
 							<Typography variant="body1">
-								"Vivamus dapibus tincidunt lorem, a sollicitudin
-								mi luctus nec. Nullam consequat sem ut urna
-								blandit, eget placerat lectus faucibus."
+								"There's not one box this gym doesn't check; the
+								instructing, the students, the culture and
+								environment all under one roof. This place IS
+								the second home you've always wanted, with an
+								amazing group of people to surround yourself
+								with to get high quality training. Look no
+								further, we got it all here!"
 							</Typography>
 						</CardContent>
 					</Card>
@@ -71,15 +73,17 @@ function Testimonials() {
 				<Grid item xs={12} sm={4}>
 					<Card sx={{ height: "100%" }}>
 						<CardContent>
-							<TestimonialAvatar
-								alt="Person 3"
-								src="/avatar3.jpg"
-							/>
-							<Typography variant="h6">Alex Johnson</Typography>
+							<TestimonialAvatar alt="Julian" src="/julian.png" />
+							<Typography variant="h6">Julian Nevarez</Typography>
 							<Typography variant="body1">
-								"Fusce aliquam elit ac justo accumsan, at
-								tristique libero pellentesque. Nam fringilla
-								varius fermentum."
+								"I've been training under Pj Barch for over 4
+								years. I can truly say he is a world class
+								instructor. Along with the rest of the
+								instructors, they have built a tight knit
+								community that shows a lot of love and support
+								for each other which makes everyone feel a sense
+								of family that strives for growth on and off the
+								mats!"
 							</Typography>
 						</CardContent>
 					</Card>

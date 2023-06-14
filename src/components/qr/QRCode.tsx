@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import { styled } from "@mui/system";
-import { Typography, Grid } from "@mui/material";
-
-const Container = styled("div")({
-	display: "flex",
-	flexDirection: "column",
-	alignItems: "center",
-	paddingTop: "2rem",
-});
+import { Typography, Grid, Box } from "@mui/material";
 
 const QRCodeComponent: React.FC = () => {
 	const [qrCodeURL, setQRCodeURL] = useState("");
@@ -29,33 +22,23 @@ const QRCodeComponent: React.FC = () => {
 	}, []);
 
 	return (
-		<Container>
-			<Grid
-				container
-				alignItems="center"
-				justifyContent="center"
-				spacing={8}
-                marginTop={1}
-			>
-				<Grid item>
-					<Typography fontWeight="bold" variant="h5" color="white">
-						Leave a review
-					</Typography>
-				</Grid>
+		<>
+			<Box flexDirection="row" display="flex" alignItems="center">
+				<Typography fontWeight="bold" variant="h5" color="white" mr={2}>
+					Give us feedback!
+				</Typography>
 				{qrCodeURL && (
-					<Grid item>
-						<img
-							src={qrCodeURL}
-							alt="QR Code"
-							style={{
-								maxWidth: "100%",
-								maxHeight: "calc(100vh - 64px - 4rem)",
-							}}
-						/>
-					</Grid>
+					<img
+						src={qrCodeURL}
+						alt="QR Code"
+						style={{
+							maxWidth: "100%",
+							maxHeight: 100,
+						}}
+					/>
 				)}
-			</Grid>
-		</Container>
+			</Box>
+		</>
 	);
 };
 

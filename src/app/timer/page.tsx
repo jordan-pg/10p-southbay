@@ -3,7 +3,14 @@ import React from "react";
 import QRCodeComponent from "@/components/qr/QRCode";
 import theme from "@/components/theme/theme";
 import TimerComponent from "@/components/timerComponent/TimerComponent";
-import { Box, Grid, ThemeProvider } from "@mui/material";
+import {
+	AppBar,
+	Box,
+	Container,
+	Grid,
+	ThemeProvider,
+	Toolbar,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import Image from "next/image";
 
@@ -59,56 +66,51 @@ const RightContainer = styled(Box)({
 	zIndex: 1,
 });
 
-const Toolbar = styled(Box)({
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	padding: "1rem",
-	position: "fixed",
-	top: 0,
-	left: 0,
-	width: "100%",
-	zIndex: 999,
-	backgroundColor: "rgba(0, 0, 0, 0.7)",
-	color: "white",
-});
-
 const Timer = () => {
 	return (
 		<ThemeProvider theme={theme}>
-			<Box>
-				<Toolbar>
-					{" "}
-					<Image src="/logo.png" alt="logo" width={70} height={50} />
+			<AppBar color="transparent" sx={{ boxShadow: "none" }}>
+				<Toolbar
+					sx={{
+						justifyContent: "space-between",
+						p: 2,
+					}}
+				>
+					<Image
+						src="/long_logo.png"
+						alt="logo"
+						width={340}
+						height={100}
+					/>
+					<QRCodeComponent />
 				</Toolbar>
-				<PageContainer>
-					<ImageOverlay />
-					<ImageBackground />
-					<Box marginTop="4rem" width="100%" height="100%">
-						<Grid container>
-							<Grid item xs={12} md={6}>
-								<LeftContainer>
-									<iframe
-										src="https://open.spotify.com/embed/playlist/2otQLmbi8QWHjDfq3eL0DC?utm_source=generator&theme=0"
-										width="100%"
-										height="552"
-										frameBorder="0"
-										allowFullScreen
-										allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-										loading="lazy"
-									></iframe>
-								</LeftContainer>
-							</Grid>
-							<Grid item xs={12} md={6}>
-								<RightContainer>
-									<TimerComponent autoStart={false} />
-									<QRCodeComponent />
-								</RightContainer>
-							</Grid>
+			</AppBar>
+			<PageContainer>
+				<ImageOverlay />
+				<ImageBackground />
+				<Box marginTop="4rem" width="100%" height="100%">
+					<Grid container>
+						<Grid item xs={4}>
+							<LeftContainer>
+								<iframe
+									src="https://open.spotify.com/embed/playlist/2otQLmbi8QWHjDfq3eL0DC?utm_source=generator&theme=0"
+									width="100%"
+									height="552"
+									frameBorder="0"
+									allowFullScreen
+									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+									loading="lazy"
+								></iframe>
+							</LeftContainer>
 						</Grid>
-					</Box>
-				</PageContainer>
-			</Box>
+						<Grid item xs={8}>
+							<RightContainer>
+								<TimerComponent autoStart={false} />
+							</RightContainer>
+						</Grid>
+					</Grid>
+				</Box>
+			</PageContainer>
 		</ThemeProvider>
 	);
 };

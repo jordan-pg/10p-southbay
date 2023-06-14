@@ -1,20 +1,25 @@
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: '10th Planet South Bay',
-  description: '10th Planet South Bay Jiu-jitsu',
-}
+	title: "10th Planet South Bay",
+	description: "10th Planet South Bay Jiu-jitsu",
+	icons: {
+		icon: "/favicon.ico",
+	},
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body style={{margin: 0}} className={inter.className}>{children}</body>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<body style={{ margin: 0 }} className={inter.className}>
+				{children}
+			</body>
+		</html>
+	);
 }

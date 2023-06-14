@@ -1,9 +1,20 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const Footer: React.FC = () => {
 	return (
 		<footer>
-			Copyright © Pantera Grappling 10th Planet South Bay 2023.
+			<Box
+				sx={{
+					backgroundColor: "rgb(33, 33, 33)",
+					textAlign: "center",
+					p: 1,
+				}}
+			>
+				<Typography variant="subtitle1">
+					Copyright © Pantera Grappling 10th Planet South Bay 2023.
+				</Typography>
+			</Box>
 		</footer>
 	);
 };

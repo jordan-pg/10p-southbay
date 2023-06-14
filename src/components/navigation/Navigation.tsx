@@ -23,10 +23,16 @@ import Footer from "@/components/footer/Footer";
 import Schedule from "@/components/schedule/Schedule";
 import { Link } from "react-scroll";
 import Contact from "@/components/contact/Contact";
-// import MemberModal from "@/components/memberModal/MemberModal";
+import MemberModal from "@/components/memberModal/MemberModal";
 
 const drawerWidth = 240;
-const navItems = ["ABOUT", "INSTRUCTORS", "TESTIMONIALS", "SCHEDULE", "CONTACT",];
+const navItems = [
+	"ABOUT",
+	"INSTRUCTORS",
+	"TESTIMONIALS",
+	"SCHEDULE",
+	"CONTACT",
+];
 
 const StyledNavButton = styled(ListItemButton)(({ selected }) => ({
 	position: "relative",
@@ -128,7 +134,7 @@ const Navigation = () => {
 				10th Planet South Bay
 			</Typography>
 			<Divider />
-			<List>
+			<List sx={{ textAlign: "start", m: 2 }}>
 				{navItems.map((item) => (
 					<Link
 						key={item.toLowerCase()}
@@ -146,19 +152,18 @@ const Navigation = () => {
 						</StyledNavButton>
 					</Link>
 				))}
-				{/* <MemberModal /> */}
+				<Box my={2}>
+					<MemberModal />
+				</Box>
 				<Button
 					variant="contained"
-					sx={{
-						my: 2,
-					}}
 					onClick={() =>
 						window.open(
 							"https://cp.mystudio.io/m/?=10PSBAY%252F10553%252F54044%252F%252F1684130926"
 						)
 					}
 				>
-					Pre-order Membership
+					Purchase Membership
 				</Button>
 			</List>
 		</Box>
@@ -192,13 +197,20 @@ const Navigation = () => {
 								display: "flex",
 							}}
 						>
-							<Image
-								src="/logo.png"
-								alt="logo"
-								width={70}
-								height={50}
-								style={{ cursor: "pointer" }}
-							/>
+							<Link
+								to="home"
+								spy={true}
+								smooth={true}
+								duration={500}
+							>
+								<Image
+									src="/10p_logo.png"
+									alt="logo"
+									width={70}
+									height={50}
+									style={{ cursor: "pointer" }}
+								/>
+							</Link>
 							{navItems.map((item) => (
 								<Link
 									key={item.toLowerCase()}
@@ -213,7 +225,8 @@ const Navigation = () => {
 											display: {
 												xs: "none",
 												sm: "none",
-												md: "inline-flex",
+												md: 'none',
+												lg: "flex",
 											},
 										}}
 										selected={
@@ -229,10 +242,10 @@ const Navigation = () => {
 						</Box>
 						<Box
 							sx={{
-								display: { xs: "none", sm: "none", md: "flex" },
+								display: { xs: "none", sm: "none", md: "none", lg: 'flex' },
 							}}
 						>
-							{/* <MemberModal /> */}
+							<MemberModal />
 							<Button
 								variant="contained"
 								sx={{
@@ -244,7 +257,7 @@ const Navigation = () => {
 									)
 								}
 							>
-								Pre-order Membership
+								Purchase Membership
 							</Button>
 						</Box>
 						<IconButton
@@ -252,7 +265,7 @@ const Navigation = () => {
 							aria-label="open drawer"
 							edge="start"
 							onClick={handleDrawerToggle}
-							sx={{ display: { md: "none" } }}
+							sx={{ display: { lg: "none" } }}
 						>
 							<MenuIcon />
 						</IconButton>
@@ -268,7 +281,6 @@ const Navigation = () => {
 							keepMounted: true,
 						}}
 						sx={{
-							display: { xs: "block", sm: "none" },
 							"& .MuiDrawer-paper": {
 								boxSizing: "border-box",
 								width: drawerWidth,
@@ -296,7 +308,7 @@ const Navigation = () => {
 						<Instructors />
 					</section>
 					<section id="testimonials">
-					<Testimonials />
+						<Testimonials />
 					</section>
 					<section id="schedule">
 						<Schedule drawerOpen={mobileOpen} />
