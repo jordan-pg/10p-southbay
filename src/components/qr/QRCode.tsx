@@ -16,6 +16,7 @@ const QRCodeComponent: React.FC = () => {
 			}
 		};
 
+        
 		generateQR(
 			"https://docs.google.com/forms/d/e/1FAIpQLSevPx4j8fYeqxPSr_K4UMKPaDj7cMskIyn0xNlV-exzfCoDVg/viewform"
 		);
