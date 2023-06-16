@@ -6,7 +6,7 @@ import AppleIcon from "@mui/icons-material/Apple";
 import ShopIcon from "@mui/icons-material/Shop";
 import WebIcon from "@mui/icons-material/Web";
 
-const MemberModal = () => {
+const PurchaseModal = () => {
 	const [openModal, setOpenModal] = useState(false);
 
 	const handleOpenModal = () => {
@@ -17,20 +17,14 @@ const MemberModal = () => {
 		setOpenModal(false);
 	};
 
-	const handleCopyCode = () => {
-		navigator.clipboard.writeText("10PSBAY").then(() => {
-			alert("Copied!");
-		});
-	};
-
 	return (
 		<>
 			<Button
 				onClick={handleOpenModal}
-				variant="text"
+				variant="contained"
 				color="primary"
 			>
-				MEMBER LOGIN
+				Purchase Membership
 			</Button>
 
 			<Modal
@@ -60,69 +54,55 @@ const MemberModal = () => {
 					</IconButton>
 
 					<Typography variant="h6" gutterBottom>
-						Login Instructions
+						Get Started Today
 					</Typography>
 					<ol>
 						<li style={{ marginBottom: "10px" }}>
-							<Box>
-								<Typography variant="body1">
-									Copy the studio code:
-								</Typography>
-								<Button
-									sx={{ marginY: 2 }}
-									startIcon={<FileCopyIcon />}
-									fullWidth
-									onClick={handleCopyCode} // Add onClick handler for copying
-								>
-									10PSBAY
-								</Button>
-							</Box>
-						</li>
-						<li style={{ marginBottom: "10px" }}>
 							<Typography variant="body1">
-								Download the app or go to the website:
+								Choose a program:
 							</Typography>
 							<Button
 								sx={{ marginY: 2 }}
 								fullWidth
-								startIcon={<AppleIcon />}
 								onClick={() =>
 									window.open(
-										"https://apps.apple.com/us/app/mystudio-app/id1258207230"
+										"https://cp.mystudio.io/m/?=10PSBAY/10553/54044//1686877502"
 									)
 								}
 							>
-								Apple Store
+								ADULT MEMBERSHIP
 							</Button>
 							<Button
 								fullWidth
-								startIcon={<ShopIcon />}
 								onClick={() =>
 									window.open(
-										"https://play.google.com/store/apps/details?id=com.mystudio.app"
+										"https://cp.mystudio.io/m/?=10PSBAY/10553/54022//1686877502"
 									)
 								}
 							>
-								Google Play Store
+								KIDS MEMBERSHIP
 							</Button>
 							<Button
 								sx={{ marginY: 2 }}
 								fullWidth
-								startIcon={<WebIcon />}
 								onClick={() =>
 									window.open(
-										"https://cp.mystudio.io/Mobile/?=10PSBAY/10553///1686720467"
+										"https://cp.mystudio.io/m/?=10PSBAY/10553/55464//1686877502"
 									)
 								}
 							>
-								Website
+								WOMEN'S SELF-DEFENSE MEMBERSHIP
 							</Button>
-						</li>
-						<li style={{ marginTop: "10px" }}>
-							<Typography variant="body1">
-								Enter your studio code + account information to
-								login and manage your account.
-							</Typography>
+							<Button
+								fullWidth
+								onClick={() =>
+									window.open(
+										"https://cp.mystudio.io/m/?=10PSBAY/10553/54528//1686877502"
+									)
+								}
+							>
+								FIRST RESPONDERS MEMBERSHIP
+							</Button>
 						</li>
 					</ol>
 				</Box>
@@ -131,4 +111,4 @@ const MemberModal = () => {
 	);
 };
 
-export default MemberModal;
+export default PurchaseModal;

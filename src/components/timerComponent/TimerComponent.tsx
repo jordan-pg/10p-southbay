@@ -1,5 +1,5 @@
 import { Typography, Button, Box } from "@mui/material";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -10,13 +10,13 @@ const TimerContainer = styled("div")`
 	color: white;
 `;
 
-const TimerDisplay = styled("div")`
-	font-size: 100px;
+const TimerDisplay = styled(Box)`
+	font-size: 120px;
 	display: flex;
 	justify-content: center;
-	background-color: #242424;
+	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 8px;
-	padding: 30px;
+	padding: 0px;
 `;
 
 const TimerBlock = styled("div")`
@@ -27,13 +27,28 @@ const TimerBlock = styled("div")`
 `;
 
 const TimerNumber = styled("span")`
-	font-size: 200px;
+	font-size: 24rem;
+	font-weight: bold;
 	color: #fff;
+	line-height: 21rem;
 `;
 
 const TimerLabel = styled("span")`
-	font-size: 24px;
+	font-size: 48px;
 	color: #fff;
+`;
+
+const ResponsiveTimerDisplay = styled(TimerDisplay)`
+	@media (max-width: 768px) {
+		padding: 20px;
+		font-size: 18rem;
+	}
+`;
+
+const ResponsiveTimerBlock = styled(TimerBlock)`
+	@media (max-width: 768px) {
+		margin: 10px 0;
+	}
 `;
 
 interface TimerComponentProps {
@@ -44,8 +59,6 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 	const [loop, setLoop] = useState(false);
 	const [loopedTimer, setLoopedTimer] = useState(false);
 	const [timeToAdd, setTimeToAdd] = useState(5); // Set initial state to 5
-	const [delaySeconds, setDelaySeconds] = useState(20); // Set initial delay to 20 seconds
-	const [isDelayed, setIsDelayed] = useState(false);
 
 	const formatTime = (value: number) => {
 		return value.toString().padStart(2, "0");
@@ -94,76 +107,66 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 
 	const currentTime = new Date().getTime();
 	const expiryTimestamp = currentTime + timeToAdd * 60000;
-	const timerRef = useRef<any>(null);
 
-	const {
-		seconds,
-		minutes,
-		hours,
-		isRunning,
-		start,
-		pause,
-		resume,
-		restart,
-	} = useTimer({
-		expiryTimestamp: new Date(expiryTimestamp),
-		autoStart,
-		onExpire: () => {
-			console.warn("onExpire called");
-			setIsDelayed(loop || loopedTimer); // Use `loop` or `loopedTimer` for delay display
-			if (loop || loopedTimer) {
-				// Start loop if either `loop` or `loopedTimer` is true
-				timerRef.current = setTimeout(() => {
-					setLoopedTimer(true); // Set loopedTimer state to true
-					handleResetTimer();
-					start();
-				}, delaySeconds * 1000);
-			}
-		},
-	});
+	const { seconds, minutes, isRunning, start, pause, resume, restart } =
+		useTimer({
+			expiryTimestamp: new Date(expiryTimestamp),
+			autoStart,
+			onExpire: () => {
+				const audio = new Audio("/bell.mp3");
+				const currentTime = new Date().getTime();
+				const updatedExpiryTimestamp = currentTime + timeToAdd * 60000;
+				const time = new Date(updatedExpiryTimestamp);
+
+				audio.play();
+				if (loop) {
+					if (!loopedTimer) {
+						const t = new Date();
+						t.setSeconds(t.getSeconds() + 30);
+						setLoopedTimer(true);
+						return restart(t);
+					} else {
+						setLoopedTimer(false);
+						return restart(time);
+					}
+				}
+				return restart(time);
+			},
+		});
 
 	useEffect(() => {
-		if ((loop || loopedTimer) && !isRunning) {
-			// Start loop if either `loop` or `loopedTimer` is true
-			setDelaySeconds(20);
-			timerRef.current = setTimeout(() => {
-				setLoopedTimer(true); // Set loopedTimer state to true
-				handleResetTimer();
-				start();
-			}, delaySeconds * 1000);
+		if (loop) {
+			resume();
 		}
-
-		return () => {
-			clearTimeout(timerRef.current as any);
-		};
-	}, [loop, loopedTimer, isRunning]);
+	}, [loopedTimer]);
 
 	return (
 		<TimerContainer>
-			<Typography variant="h5" fontWeight="bold" pb={3}>
-				Timer
+			<Typography
+				variant="h5"
+				fontWeight="bold"
+				mt={2}
+				sx={{ fontSize: "72px" }}
+			>
+				{loop && !isRunning && "TIMER"}
+				{loop && loopedTimer && isRunning && "FIND A PARTNER"}
+				{loop && !loopedTimer && isRunning && "ROUND IN PROGRESS"}
+				{!loop && "TIMER"}
 			</Typography>
-			<TimerDisplay>
-				<TimerBlock>
-					<TimerNumber>{formatTime(hours)}</TimerNumber>
-					<TimerLabel>hours</TimerLabel>
-				</TimerBlock>
-				<span style={{ alignSelf: "center" }}>:</span>
-				<TimerBlock>
+			<ResponsiveTimerDisplay>
+				<ResponsiveTimerBlock>
 					<TimerNumber>{formatTime(minutes)}</TimerNumber>
 					<TimerLabel>minutes</TimerLabel>
-				</TimerBlock>
-				<span style={{ alignSelf: "center" }}>:</span>
-				<TimerBlock>
-					<TimerNumber>
-						{isDelayed
-							? formatTime(delaySeconds)
-							: formatTime(seconds)}
-					</TimerNumber>
+				</ResponsiveTimerBlock>
+				<span style={{ alignSelf: "center", fontWeight: "bold" }}>
+					:
+				</span>
+				<ResponsiveTimerBlock>
+					<TimerNumber>{formatTime(seconds)}</TimerNumber>
 					<TimerLabel>seconds</TimerLabel>
-				</TimerBlock>
-			</TimerDisplay>
-			<Box marginTop={2}>
+				</ResponsiveTimerBlock>
+			</ResponsiveTimerDisplay>
+			<Box pt={6}>
 				<Button
 					variant="contained"
 					onClick={handleToggleTimer}
@@ -178,8 +181,6 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 				>
 					Reset
 				</Button>
-			</Box>
-			<Box marginTop={2}>
 				<Button
 					variant="text"
 					startIcon={<AddIcon />}

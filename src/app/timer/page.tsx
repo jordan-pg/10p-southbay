@@ -6,8 +6,6 @@ import TimerComponent from "@/components/timerComponent/TimerComponent";
 import {
 	AppBar,
 	Box,
-	Container,
-	Grid,
 	ThemeProvider,
 	Toolbar,
 } from "@mui/material";
@@ -51,21 +49,6 @@ const ImageBackground = styled(Box)({
 	zIndex: -2,
 });
 
-const LeftContainer = styled(Box)({
-	textAlign: "center",
-	padding: "2rem",
-	display: "flex",
-	flexDirection: "column",
-	justifyContent: "center",
-	zIndex: 1,
-});
-
-const RightContainer = styled(Box)({
-	textAlign: "center",
-	padding: "2rem",
-	zIndex: 1,
-});
-
 const Timer = () => {
 	return (
 		<ThemeProvider theme={theme}>
@@ -73,42 +56,24 @@ const Timer = () => {
 				<Toolbar
 					sx={{
 						justifyContent: "space-between",
-						p: 2,
+						p: 1,
 					}}
 				>
 					<Image
 						src="/long_logo.png"
 						alt="logo"
-						width={340}
-						height={100}
+						width={280}
+						height={80}
 					/>
 					<QRCodeComponent />
 				</Toolbar>
 			</AppBar>
 			<PageContainer>
+				<Toolbar />
 				<ImageOverlay />
 				<ImageBackground />
-				<Box marginTop="4rem" width="100%" height="100%">
-					<Grid container>
-						<Grid item xs={4}>
-							<LeftContainer>
-								<iframe
-									src="https://open.spotify.com/embed/playlist/2otQLmbi8QWHjDfq3eL0DC?utm_source=generator&theme=0"
-									width="100%"
-									height="552"
-									frameBorder="0"
-									allowFullScreen
-									allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-									loading="lazy"
-								></iframe>
-							</LeftContainer>
-						</Grid>
-						<Grid item xs={8}>
-							<RightContainer>
-								<TimerComponent autoStart={false} />
-							</RightContainer>
-						</Grid>
-					</Grid>
+				<Box mt={4} width="100%" height="100%">
+					<TimerComponent autoStart={false} />
 				</Box>
 			</PageContainer>
 		</ThemeProvider>

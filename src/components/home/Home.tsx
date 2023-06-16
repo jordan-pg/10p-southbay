@@ -70,6 +70,32 @@ const HeroButton = styled(Button)`
 	}
 `;
 
+const CustomLink = styled(Button)`
+	padding: 8px 18px;
+	opacity: 0;
+	animation: fade-in-button 1s ease-in-out forwards;
+	animation-delay: 1.5s;
+	background-color: transparent;
+	border: none;
+	text-decoration: underline;
+
+	@keyframes fade-in-button {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	&:hover {
+		background-color: transparent;
+		color: #26c0e2;
+		text-decoration: underline #26c0e2;
+	}
+`;
+
 const Home = () => {
 	return (
 		<HeroSection>
@@ -85,12 +111,23 @@ const Home = () => {
 					variant="contained"
 					onClick={() =>
 						window.open(
-							"https://cp.mystudio.io/m/?=10PSBAY%252F10553%252F54044%252F%252F1684130926"
+							"https://cp.mystudio.io/m/?=10PSBAY/10553/54052//1686877502"
 						)
 					}
 				>
-					GET STARTED TODAY
+					TRY A CLASS FOR FREE
 				</HeroButton>
+				<Box mt={2}>
+					<CustomLink
+						onClick={() =>
+							window.open(
+								"https://cp.mystudio.io/m/?=10PSBAY/10553/54312//1686877502"
+							)
+						}
+					>
+						Open Mat Waiver
+					</CustomLink>
+				</Box>
 			</Container>
 			<BackgroundVideo />
 		</HeroSection>

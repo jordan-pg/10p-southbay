@@ -24,6 +24,7 @@ import Schedule from "@/components/schedule/Schedule";
 import { Link } from "react-scroll";
 import Contact from "@/components/contact/Contact";
 import MemberModal from "@/components/memberModal/MemberModal";
+import PurchaseModal from "../purchaseModal/PurchaseModal";
 
 const drawerWidth = 240;
 const navItems = [
@@ -155,16 +156,7 @@ const Navigation = () => {
 				<Box my={2}>
 					<MemberModal />
 				</Box>
-				<Button
-					variant="contained"
-					onClick={() =>
-						window.open(
-							"https://cp.mystudio.io/m/?=10PSBAY%252F10553%252F54044%252F%252F1684130926"
-						)
-					}
-				>
-					Purchase Membership
-				</Button>
+				<PurchaseModal />
 			</List>
 		</Box>
 	);
@@ -225,7 +217,7 @@ const Navigation = () => {
 											display: {
 												xs: "none",
 												sm: "none",
-												md: 'none',
+												md: "none",
 												lg: "flex",
 											},
 										}}
@@ -242,23 +234,18 @@ const Navigation = () => {
 						</Box>
 						<Box
 							sx={{
-								display: { xs: "none", sm: "none", md: "none", lg: 'flex' },
+								display: {
+									xs: "none",
+									sm: "none",
+									md: "none",
+									lg: "flex",
+								},
 							}}
 						>
-							<MemberModal />
-							<Button
-								variant="contained"
-								sx={{
-									ml: 2,
-								}}
-								onClick={() =>
-									window.open(
-										"https://cp.mystudio.io/m/?=10PSBAY%252F10553%252F54044%252F%252F1684130926"
-									)
-								}
-							>
-								Purchase Membership
-							</Button>
+							<div style={{ marginRight: 10 }}>
+								<MemberModal />
+							</div>
+							<PurchaseModal />
 						</Box>
 						<IconButton
 							color="inherit"
