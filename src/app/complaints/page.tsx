@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
-import QRCodeComponent from "@/components/qr/QRCode";
 import theme from "@/components/theme/theme";
-import TimerComponent from "@/components/timerComponent/TimerComponent";
-import { AppBar, Box, ThemeProvider, Toolbar } from "@mui/material";
+import { AppBar, Box, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import Image from "next/image";
 
@@ -44,7 +42,7 @@ const ImageBackground = styled(Box)({
 	zIndex: -2,
 });
 
-const Timer = () => {
+const Complaints = () => {
 	return (
 		<ThemeProvider theme={theme}>
 			<AppBar color="transparent" sx={{ boxShadow: "none" }}>
@@ -60,22 +58,31 @@ const Timer = () => {
 						width={280}
 						height={80}
 					/>
-					<QRCodeComponent
-						type="feedback"
-						code="https://docs.google.com/forms/d/e/1FAIpQLSevPx4j8fYeqxPSr_K4UMKPaDj7cMskIyn0xNlV-exzfCoDVg/viewform"
-					/>
 				</Toolbar>
 			</AppBar>
 			<PageContainer>
 				<Toolbar />
 				<ImageOverlay />
 				<ImageBackground />
-				<Box mt={4} width="100%" height="100%">
-					<TimerComponent autoStart={false} />
+				<Box width="100%" height="100%">
+					<Typography
+						fontWeight="bold"
+						variant="h2"
+						color="white"
+						mb={6}
+					>
+						Concerns & Complaints
+					</Typography>
+					<Image
+						src="/qrcode.png"
+						width={450}
+						height={450}
+						alt={"qr"}
+					/>
 				</Box>
 			</PageContainer>
 		</ThemeProvider>
 	);
 };
 
-export default Timer;
+export default Complaints;

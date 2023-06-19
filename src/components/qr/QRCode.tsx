@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import QRCode from "qrcode";
-import { styled } from "@mui/system";
-import { Typography, Grid, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
-const QRCodeComponent: React.FC = () => {
+const QRCodeComponent = ({ code, type }: { code: string; type: string }) => {
 	const [qrCodeURL, setQRCodeURL] = useState("");
 
 	useEffect(() => {
@@ -16,25 +15,31 @@ const QRCodeComponent: React.FC = () => {
 			}
 		};
 
-        
-		generateQR(
-			"https://docs.google.com/forms/d/e/1FAIpQLSevPx4j8fYeqxPSr_K4UMKPaDj7cMskIyn0xNlV-exzfCoDVg/viewform"
-		);
+		generateQR(code);
 	}, []);
 
 	return (
 		<>
-			<Box flexDirection="row" display="flex" alignItems="center">
+			{type === "complaints" && (
+				<Typography fontWeight="bold" variant="h2" color="white" mb={6}>
+					Concerns & Complaints
+				</Typography>
+			)}
+			<Box
+				flexDirection="row"
+				display={type === 'complaints' ? "block" :  'flex'}
+				alignItems="center"
+				height={type === 'complaints' ? "50vh" :  100}
+			>
 				<Typography fontWeight="bold" variant="h5" color="white" mr={2}>
-					Give us feedback!
+					{type === "feedback" && "Give us feedback!"}
 				</Typography>
 				{qrCodeURL && (
 					<img
 						src={qrCodeURL}
-						alt="QR Code"
 						style={{
 							maxWidth: "100%",
-							maxHeight: 100,
+							height: "100%",
 						}}
 					/>
 				)}
