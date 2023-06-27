@@ -125,7 +125,7 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 				if (loop) {
 					if (!loopedTimer) {
 						const t = new Date();
-						t.setSeconds(t.getSeconds() + 30);
+						t.setSeconds(t.getSeconds() + 60);
 						setLoopedTimer(true);
 						return restart(t);
 					} else {
