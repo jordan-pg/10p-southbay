@@ -59,6 +59,7 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 	const [loop, setLoop] = useState(false);
 	const [loopedTimer, setLoopedTimer] = useState(false);
 	const [timeToAdd, setTimeToAdd] = useState(5); // Set initial state to 5
+	const [catEffect, setCatEffect] = useState(false);
 
 	const formatTime = (value: number) => {
 		return value.toString().padStart(2, "0");
@@ -69,6 +70,8 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 			pause();
 		} else {
 			resume();
+			const audio = new Audio(catEffect ? "/cat.mp3" : "/bell.mp3");
+			audio.play();
 		}
 	};
 
@@ -140,6 +143,17 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 		}
 	}, [loopedTimer]);
 
+	useEffect(() => {
+		if(isRunning && loopedTimer && seconds === 5) {
+			const audio = new Audio("/countdown.mp3");
+			audio.play();
+		}
+		if(isRunning && !loopedTimer && minutes === 0 && seconds === 10) {
+			const audio = new Audio("/wood_clap.mp3");
+			audio.play();
+		}
+	}, [seconds]);
+
 	return (
 		<TimerContainer>
 			<Typography
@@ -206,6 +220,14 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 					style={{ marginRight: "8px" }}
 				>
 					{loop ? "Disable Loop" : "Enable Loop"}
+				</Button>
+				<Button
+					disabled={isRunning}
+					variant="text"
+					onClick={() => setCatEffect(!catEffect)}
+					style={{ marginRight: "8px" }}
+				>
+					{catEffect ? "UFC Sound" : "Panther Sound"}
 				</Button>
 			</Box>
 		</TimerContainer>

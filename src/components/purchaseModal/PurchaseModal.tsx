@@ -66,7 +66,7 @@ const PurchaseModal = () => {
 								fullWidth
 								onClick={() =>
 									window.open(
-										"https://cp.mystudio.io/m/?=10PSBAY/10553/54044//1686877502"
+										"https://cp.mystudio.io/m/?=10PSBAY/10553/55540//1687206939"
 									)
 								}
 							>
