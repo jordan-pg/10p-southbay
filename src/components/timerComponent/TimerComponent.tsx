@@ -31,6 +31,10 @@ const TimerNumber = styled("span")`
 	font-weight: bold;
 	color: #fff;
 	line-height: 21rem;
+
+	@media (max-width: 1068px) {
+		font-size: 18rem;
+	}
 `;
 
 const TimerLabel = styled("span")`
@@ -48,6 +52,14 @@ const ResponsiveTimerDisplay = styled(TimerDisplay)`
 const ResponsiveTimerBlock = styled(TimerBlock)`
 	@media (max-width: 768px) {
 		margin: 10px 0;
+	}
+`;
+
+const TimerHeader = styled(Typography)`
+	font-size: 72px;
+
+	@media (max-width: 1068px) {
+		font-size: 64px;
 	}
 `;
 
@@ -70,7 +82,9 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 			pause();
 		} else {
 			resume();
-			const audio = new Audio(catEffect ? "/cat.mp3" : "/bell.mp3");
+			const audio = new Audio();
+			audio.src = catEffect ? "/cat.mp3" : "/bell.mp3";
+			audio.autoplay = true;
 			audio.play();
 		}
 	};
@@ -116,7 +130,9 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 			expiryTimestamp: new Date(expiryTimestamp),
 			autoStart,
 			onExpire: () => {
-				const audio = new Audio("/bell.mp3");
+				const audio = new Audio();
+				audio.src = "/bell.mp3";
+				audio.autoplay = true;
 				const currentTime = new Date().getTime();
 				const updatedExpiryTimestamp = currentTime + timeToAdd * 60000;
 				const time = new Date(updatedExpiryTimestamp);
@@ -144,29 +160,28 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ autoStart }) => {
 	}, [loopedTimer]);
 
 	useEffect(() => {
-		if(isRunning && loopedTimer && seconds === 5) {
-			const audio = new Audio("/countdown.mp3");
+		if (isRunning && loopedTimer && seconds === 5) {
+			const audio = new Audio();
+			audio.src = "/countdown.mp3";
+			audio.autoplay = true;
 			audio.play();
 		}
-		if(isRunning && !loopedTimer && minutes === 0 && seconds === 10) {
-			const audio = new Audio("/wood_clap.mp3");
+		if (isRunning && !loopedTimer && minutes === 0 && seconds === 10) {
+			const audio = new Audio();
+			audio.src = "/wood_clap.mp3";
+			audio.autoplay = true;
 			audio.play();
 		}
 	}, [seconds]);
 
 	return (
 		<TimerContainer>
-			<Typography
-				variant="h5"
-				fontWeight="bold"
-				mt={2}
-				sx={{ fontSize: "72px" }}
-			>
+			<TimerHeader variant="h5" fontWeight="bold" mt={2}>
 				{loop && !isRunning && "TIMER"}
 				{loop && loopedTimer && isRunning && "FIND A PARTNER"}
 				{loop && !loopedTimer && isRunning && "ROUND IN PROGRESS"}
 				{!loop && "TIMER"}
-			</Typography>
+			</TimerHeader>
 			<ResponsiveTimerDisplay>
 				<ResponsiveTimerBlock>
 					<TimerNumber>{formatTime(minutes)}</TimerNumber>
