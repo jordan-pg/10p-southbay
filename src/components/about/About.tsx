@@ -66,13 +66,14 @@ const About = () => {
 				PANTHER&apos;S DEN
 			</Typography>
 			<Typography variant="body1" m={3}>
-				PJ Barch, founder of South Bay, has long been on a journey of
-				self actualization to give meaning, purpose, community, and a
-				sense of security through Jiu Jitsu and combat sports. All of
-				the instructors at South Bay are committed to creating a
-				positive learning environment. The coaching style at our academy
-				has been developed through decades of training and competing in
-				multiple disciplines under numerous world class coaches. <br />
+				PJ Barch, founder of 10th Planet South Bay Jiu Jitsu in Chula
+				Vista, has long been on a journey of self actualization to give
+				meaning, purpose, community, and a sense of security through Jiu
+				Jitsu and combat sports. All of the instructors at South Bay are
+				committed to creating a positive learning environment. The
+				coaching style at our academy has been developed through decades
+				of training and competing in multiple disciplines under numerous
+				world class coaches. <br />
 				<br /> The systems in place utilize multiple different
 				approaches and styles of instruction to help everyone regardless
 				of experience level. Whatever your goals, or the reason you

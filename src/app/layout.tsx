@@ -3,8 +3,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "10th Planet South Bay Jiu-jitsu",
-	description: "10th Planet South Bay Jiu-jitsu",
+	title: "10th Planet South Bay | Premier Jiu Jitsu Gym in Chula Vista, CA",
+	description: "Discover the ultimate Jiu Jitsu experience at 10th Planet South Bay in Chula Vista, California. Our world-class instructors offer expert training in Jiu Jitsu, tailored for all skill levels. Join our thriving community, improve your technique, and achieve your fitness goals with us today.",
 	icons: {
 		icon: "/favicon.ico",
 		appleTouchIcon: "/apple-touch-icon.png",

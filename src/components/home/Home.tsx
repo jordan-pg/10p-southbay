@@ -121,7 +121,7 @@ const Home = () => {
 					<CustomLink
 						onClick={() =>
 							window.open(
-								"https://cp.mystudio.io/m/?=10PSBAY/10553/54312//1686877502"
+								"https://cp.mystudio.io/t/?=10PSBAY/10553/32174//1695175182"
 							)
 						}
 					>
