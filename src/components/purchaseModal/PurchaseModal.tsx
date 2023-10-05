@@ -24,7 +24,7 @@ const PurchaseModal = () => {
 				variant="contained"
 				color="primary"
 			>
-				Purchase Membership
+				Membership Info
 			</Button>
 
 			<Modal
@@ -52,11 +52,18 @@ const PurchaseModal = () => {
 					>
 						<CloseIcon />
 					</IconButton>
-
-					<Typography variant="h6" gutterBottom>
-						Get Started Today
+					<Typography variant="h6" mb={2}>
+						Call Us For Membership Information
 					</Typography>
-					<ol>
+					<Button
+						onClick={() => window.open("tel: +16197468892")}
+						variant="contained"
+						color="primary"
+						fullWidth
+					>
+						CALL NOW
+					</Button>
+					{/* <ol>
 						<li style={{ marginBottom: "10px" }}>
 							<Typography variant="body1">
 								Choose a program:
@@ -104,7 +111,7 @@ const PurchaseModal = () => {
 								FIRST RESPONDERS MEMBERSHIP
 							</Button>
 						</li>
-					</ol>
+					</ol> */}
 				</Box>
 			</Modal>
 		</>
