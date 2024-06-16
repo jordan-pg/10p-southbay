@@ -3,7 +3,6 @@ import {
 	Box,
 	Typography,
 	Grid,
-	Container,
 	Button,
 	Modal,
 	IconButton,
@@ -21,7 +20,7 @@ const AboutSection = styled(Box)`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	padding-top: 40px;
+	padding-top: 10px;
 	text-align: center;
 	margin: 150px 0;
 `;

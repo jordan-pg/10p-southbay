@@ -11,7 +11,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import { ThemeProvider, styled } from "@mui/material";
 import Image from "next/image";
 import theme from "@/components/theme/theme";
@@ -20,14 +19,16 @@ import Testimonials from "@/components/testimonials/Testimonials";
 import About from "@/components/about/About";
 import Instructors from "@/components/instructors/Instructors";
 import Footer from "@/components/footer/Footer";
-import Schedule from "@/components/schedule/Schedule";
+import Schedule from "@/components/embedded/Schedule";
 import { Link } from "react-scroll";
 import Contact from "@/components/contact/Contact";
 import MemberModal from "@/components/memberModal/MemberModal";
 import PurchaseModal from "../purchaseModal/PurchaseModal";
+import Events from "../embedded/Events";
 
 const drawerWidth = 240;
 const navItems = [
+	"EVENTS",
 	"ABOUT",
 	"INSTRUCTORS",
 	"TESTIMONIALS",
@@ -287,6 +288,9 @@ const Navigation = () => {
 				>
 					<section id="home">
 						<Home />
+					</section>
+					<section id="events">
+						<Events drawerOpen={mobileOpen} />
 					</section>
 					<section id="about">
 						<About />

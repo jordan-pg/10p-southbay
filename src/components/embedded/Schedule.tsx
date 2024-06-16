@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 

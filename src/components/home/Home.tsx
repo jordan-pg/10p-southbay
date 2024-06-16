@@ -1,7 +1,15 @@
-import React from "react";
-import { Box, Typography, Button, Container } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+	Box,
+	Typography,
+	Button,
+	Container,
+	Alert,
+	Snackbar,
+} from "@mui/material";
 import { styled } from "@mui/system";
 import BackgroundVideo from "./BackgroundVideo";
+import { ChevronRightRounded } from "@mui/icons-material";
 
 const HeroSection = styled(Box)`
 	text-align: center;
@@ -97,8 +105,41 @@ const CustomLink = styled(Button)`
 `;
 
 const Home = () => {
+	const [open, setOpen] = useState(false);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setOpen(true);
+		}, 2500);
+	}, []);
+
 	return (
 		<HeroSection>
+			<Snackbar
+				open={open}
+				onClose={() => setOpen(!open)}
+				onClick={() =>
+					window.open("https://smoothcomp.com/en/event/12947")
+				}
+			>
+				<Alert
+					onClose={() => setOpen(!open)}
+					variant="filled"
+					severity="info"
+					sx={{
+					alignItems: 'center',
+						color: "white",
+						backgroundColor: "rgba(38, 192, 226, .6)",
+						border: "1px solid rgba(38, 192, 226)",
+						mt: 6,
+						cursor: 'pointer'
+					}}
+					action={<ChevronRightRounded />}
+				>
+					Sign up for the Duel in the Den! Kids, White and Blue Belts
+					EBI rules tournament.
+				</Alert>
+			</Snackbar>
 			<Container>
 				<HeroHeader variant="h4">
 					YOUR JIU-JITSU JOURNEY STARTS HERE
