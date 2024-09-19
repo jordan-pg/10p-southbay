@@ -24,15 +24,17 @@ import { Link } from "react-scroll";
 import Contact from "@/components/contact/Contact";
 import MemberModal from "@/components/memberModal/MemberModal";
 import PurchaseModal from "../purchaseModal/PurchaseModal";
-import Events from "../embedded/Events";
+import Levels from "../levels/Levels";
+// import Events from "../embedded/Events";
 
 const drawerWidth = 240;
 const navItems = [
-	"EVENTS",
+	// "EVENTS",
 	"ABOUT",
 	"INSTRUCTORS",
 	"TESTIMONIALS",
 	"SCHEDULE",
+	"LEVELS",
 	"CONTACT",
 ];
 
@@ -289,9 +291,9 @@ const Navigation = () => {
 					<section id="home">
 						<Home />
 					</section>
-					<section id="events">
+					{/* <section id="events">
 						<Events drawerOpen={mobileOpen} />
-					</section>
+					</section> */}
 					<section id="about">
 						<About />
 					</section>
@@ -303,6 +305,9 @@ const Navigation = () => {
 					</section>
 					<section id="schedule">
 						<Schedule drawerOpen={mobileOpen} />
+					</section>
+					<section id="levels">
+						<Levels />
 					</section>
 					<section id="contact">
 						<Contact />

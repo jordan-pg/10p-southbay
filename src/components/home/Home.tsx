@@ -115,7 +115,7 @@ const Home = () => {
 
 	return (
 		<HeroSection>
-			<Snackbar
+			{/* <Snackbar
 				open={open}
 				onClose={() => setOpen(!open)}
 				onClick={() =>
@@ -139,7 +139,7 @@ const Home = () => {
 					Sign up for the Duel in the Den! Kids, White and Blue Belts
 					EBI rules tournament.
 				</Alert>
-			</Snackbar>
+			</Snackbar> */}
 			<Container>
 				<HeroHeader variant="h4">
 					YOUR JIU-JITSU JOURNEY STARTS HERE

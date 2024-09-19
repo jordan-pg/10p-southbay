@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
 				}}
 			>
 				<Typography variant="subtitle1">
-					Copyright © Pantera Grappling 10th Planet South Bay 2023.
+					Copyright © Pantera Grappling 10th Planet South Bay 2024.
 				</Typography>
 			</Box>
 		</footer>

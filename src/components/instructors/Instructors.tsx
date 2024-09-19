@@ -27,14 +27,22 @@ const InstructorsSection = styled(Box)`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 40px;
+	padding: 30px;
 	text-align: center;
+	width: 100%;
 `;
 
 const InstructorCard = styled(Card)`
 	padding: 20px;
 	border-radius: 8px;
-	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	text-align: center;
+	width: 100%;
+	max-width: 350px; /* Adjust this if you want cards wider */
 `;
 
 const InstructorImage = styled(Image)`
@@ -48,6 +56,8 @@ const InstructorName = styled(Typography)`
 
 const InstructorSpecialty = styled(Typography)`
 	margin-top: 5px;
+	text-align: center;
+	flex-grow: 1;
 `;
 
 const style = {
@@ -57,7 +67,7 @@ const style = {
 	transform: "translate(-50%, -50%)",
 	overflowY: "scroll",
 	maxHeight: "80vh",
-	width: '90%',
+	width: "90%",
 	bgcolor: "background.paper",
 	border: "2px solid #000",
 	borderRadius: 4,
@@ -69,9 +79,9 @@ const Instructors = () => {
 	const [openModal, setOpenModal] = useState(false);
 	const [instructor, setInstructor] = useState<any>(undefined);
 
-	const handleOpenModal = (instructor: string) => {
+	const handleOpenModal = (instructorName: string) => {
 		const selectedInstructor = texts.find(
-			(text) => text.name === instructor
+			(text) => text.name === instructorName
 		);
 		setInstructor(selectedInstructor);
 		setOpenModal(true);
@@ -100,105 +110,55 @@ const Instructors = () => {
 					TALENTED INSTRUCTORS
 				</Typography>
 			</Box>
-			<Grid container spacing={2}>
-				<Grid item xs={12} sm={4} md={3}>
-					<InstructorCard>
-						<InstructorImage
-							src="/pj2.png"
-							alt="PJ"
-							width={200}
-							height={200}
-						/>
-						<InstructorName variant="h5">PJ Barch</InstructorName>
-						<InstructorSpecialty variant="body1" m={3}>
-							No Gi
-							<br />
-							Wrestling Specialist
-						</InstructorSpecialty>
-						<Button
-							variant="contained"
-							onClick={() =>
-								handleOpenModal('PJ "Butter Panther" Barch')
-							}
-						>
-							Learn More
-						</Button>
-					</InstructorCard>
-				</Grid>
-				<Grid item xs={12} sm={4} md={3}>
-					<InstructorCard>
-						<InstructorImage
-							src="/dawna2.png"
-							alt="Dawna"
-							width={200}
-							height={200}
-						/>
-						<InstructorName variant="h5">
-							Dawna Gonzales
-						</InstructorName>
-						<InstructorSpecialty variant="body1" m={3}>
-							Women&apos;s Self Defense
-							<br />
-							Fundamentals Specialist
-						</InstructorSpecialty>
-						<Button
-							variant="contained"
-							onClick={() => handleOpenModal("Dawna Gonzales")}
-						>
-							Learn More
-						</Button>
-					</InstructorCard>
-				</Grid>
-				<Grid item xs={12} sm={4} md={3}>
-					<InstructorCard>
-						<InstructorImage
-							src="/rachel2.png"
-							alt="Rachel"
-							width={200}
-							height={200}
-						/>
-						<InstructorName variant="h5">
-							Rachel Ranschau
-						</InstructorName>
-						<InstructorSpecialty variant="body1" m={3}>
-							Gi
-							<br />
-							Competition Specialist
-						</InstructorSpecialty>
-						<Button
-							variant="contained"
-							onClick={() => handleOpenModal("Rachel Ranschau")}
-						>
-							Learn More
-						</Button>
-					</InstructorCard>
-				</Grid>
-				<Grid item xs={12} sm={4} md={3}>
-					<InstructorCard>
-						<InstructorImage
-							src="/allan2.png"
-							alt="Allan"
-							width={200}
-							height={200}
-						/>
-						<InstructorName variant="h5">
-							Allan De Los Reyes
-						</InstructorName>
-						<InstructorSpecialty variant="body1" m={3}>
-							Kids Coach
-							<br />
-							Wrestling Specialist
-						</InstructorSpecialty>
-						<Button
-							variant="contained"
-							onClick={() =>
-								handleOpenModal("Allan De Los Reyes")
-							}
-						>
-							Learn More
-						</Button>
-					</InstructorCard>
-				</Grid>
+			<Grid
+				container
+				spacing={3}
+				justifyContent="center"
+				alignItems="stretch"
+				sx={{ width: "100%" }}
+			>
+				{texts.map((instructor, index) => (
+					<Grid
+						key={index}
+						item
+						xs={12} // Full width on extra small screens
+						sm={6} // Two items per row on small screens
+						md={4} // Three items per row on medium screens
+						lg={3} // Four items per row on large screens
+						sx={{
+							display: "flex",
+							justifyContent: "center",
+							width: "100%",
+							minWidth: 0, // Prevents cards from squeezing
+						}}
+					>
+						<InstructorCard>
+							<InstructorImage
+								src={instructor.image}
+								alt={instructor.name}
+								width={200}
+								height={200}
+							/>
+							<InstructorName variant="h5">
+								{instructor.name}
+							</InstructorName>
+							<InstructorSpecialty variant="body1" m={3}>
+								{instructor?.description?.map(
+									(item: any, index: any) => {
+										return <div key={index}>{item}</div>;
+									}
+								)}
+							</InstructorSpecialty>
+							<Button
+								variant="contained"
+								onClick={() => handleOpenModal(instructor.name)}
+								sx={{ marginTop: "auto" }}
+							>
+								Learn More
+							</Button>
+						</InstructorCard>
+					</Grid>
+				))}
 			</Grid>
 			<Modal open={openModal} onClose={handleCloseModal}>
 				<Box sx={style}>
@@ -227,7 +187,11 @@ const Instructors = () => {
 								{instructor?.name}
 							</Typography>
 							<Typography variant="subtitle1" fontWeight="bold">
-								{instructor?.description}
+								{instructor?.description?.map(
+									(item: any, index: any) => {
+										return <div key={index}>{item}</div>;
+									}
+								)}
 							</Typography>
 						</Grid>
 					</Grid>
@@ -251,19 +215,23 @@ const Instructors = () => {
 						)}
 					</List>
 
-					<Typography variant="h5">Fun Facts:</Typography>
-					<List>
-						{instructor?.funFacts?.map(
-							(funFact: any, index: any) => (
-								<ListItem key={index}>
-									<ListItemIcon>
-										<ArrowRightIcon />
-									</ListItemIcon>
-									<ListItemText primary={funFact} />
-								</ListItem>
-							)
-						)}
-					</List>
+					{instructor?.funFacts?.length > 0 && (
+						<>
+							<Typography variant="h5">Fun Facts:</Typography>
+							<List>
+								{instructor?.funFacts?.map(
+									(funFact: any, index: any) => (
+										<ListItem key={index}>
+											<ListItemIcon>
+												<ArrowRightIcon />
+											</ListItemIcon>
+											<ListItemText primary={funFact} />
+										</ListItem>
+									)
+								)}
+							</List>
+						</>
+					)}
 				</Box>
 			</Modal>
 		</InstructorsSection>

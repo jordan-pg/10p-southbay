@@ -22,7 +22,7 @@ const AboutSection = styled(Box)`
 	justify-content: space-between;
 	padding-top: 10px;
 	text-align: center;
-	margin: 150px 0;
+	margin: 100px 0;
 `;
 
 const ImageGrid = styled(Grid)`
@@ -53,6 +53,7 @@ const About = () => {
 
 	return (
 		<AboutSection>
+			<Box>
 			<Typography variant="h5" sx={{ fontWeight: "bold" }} gutterBottom>
 				WELCOME TO THE
 			</Typography>
@@ -64,6 +65,7 @@ const About = () => {
 			>
 				PANTHER&apos;S DEN
 			</Typography>
+			</Box>
 			<Typography variant="body1" m={3}>
 				PJ Barch, founder of 10th Planet South Bay Jiu Jitsu in Chula
 				Vista, has long been on a journey of self actualization to give

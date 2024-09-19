@@ -5,9 +5,10 @@ const VideoContainer = styled("div")`
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100vw;
+	width: 99vw;
 	height: 100vh;
 	z-index: -1;
+	overflow: hidden !important;
 `;
 
 const Video = styled("video")`

@@ -3,9 +3,9 @@ import { styled } from "@mui/system";
 import { Box, Typography } from "@mui/material";
 
 const ScheduleSection = styled(Box)(({ theme }) => ({
-	margin: theme.spacing(6),
+	// margin: theme.spacing(3),
 	textAlign: "center",
-	marginTop: 50,
+	margin: '100px 30px'
 }));
 
 const GoogleCalendarEmbed = styled("iframe")(
