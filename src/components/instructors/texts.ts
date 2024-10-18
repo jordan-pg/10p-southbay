@@ -55,7 +55,7 @@ export const texts = [
 	},
 	{
 		name: "Dave Navilliat",
-		description: ["Brown Belt", "Wrestling Specialist"],
+		description: ["Brown Belt", "Competition Coach", "Wrestling Specialist"],
 		
 		summary:
 			"Born in Rhode Island, David Navilliat began wrestling in the 5th grade & progressed through high school. He accumulated over 100 wins as well as being a two time D2 State runner-up. In 2018 David started training at 10th Planet Poway with Kevin Berbrich. He progressed to purple belt within two years. Quickly after he began his true passion of teaching & coaching grappling. Since then he has committed himself to being a student of not only jiu-jitsu, but the art of coaching as well. In the beginning of 2022 he was promoted to Brown Belt under Kevin Berbrich & Sloan Clymer, making him both a 10thPlanet & Legion AJJ Brown belt. David is a full-time coach at 10th Planet South Bay where he teaches multiple times throughout the day. He uses a variety of different coaching methods throughout class to make grappling engaging & improve learning. Fun Facts: ⁃ Former Massage Therapist & Yoga Teacher ⁃ Favorite submission is the Side Triangle",
@@ -67,7 +67,7 @@ export const texts = [
 	},
 	{
 		name: "Joey Balistreri",
-		description: ["Brown Belt", "Kids Coach", "Mixed Levels Specialist"],
+		description: ["Brown Belt", "Kids Coach", "Fundamentals Specialist"],
 		summary:
 			"The seed of grappling was sown in Joey's heart long before he stepped onto the mats, back when he was just a boy watching Pride fights, marveling at the spectacle and dreaming of one day being part of something so electrifying. This dream was nurtured in the most humble of dojos—a friend's backyard—where Joey received his first taste of Brazilian Jiu-Jitsu under the guidance of his childhood best friend’s stepdad, a Jiu-Jitsu black belt. Joey Balistreri's journey in the world of grappling is a narrative of transformation, dedication, and community. From his earliest days learning Jiu-Jitsu in a friend's backyard to his current role as a coach and competitor, Joey embodies the spirit of continuous growth and the positive impact of martial arts. His story is a testament to the power of perseverance, the importance of mentorship, and the transformative nature of Jiu-Jitsu. As Joey continues to compete, coach, and contribute to the grappling community, his journey encourages others to explore their potential within the sport, offering guidance, inspiration, and a welcoming hand to those ready to take the first step onto the mats.",
 		funFacts: [],
