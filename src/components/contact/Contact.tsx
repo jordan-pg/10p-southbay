@@ -60,12 +60,12 @@ const Contact = () => {
 					<Typography variant="body1" paragraph fontWeight="bold">
 						<Button
 							component={Link}
-							href="tel:+13023961440"
+							href="tel:+16197468892"
 							color="inherit"
 							sx={{ px: 4 }}
 							startIcon={<Phone sx={{ marginRight: "0.5rem" }} />}
 						>
-							+1 (302) 396-1440
+							+1 619-746-8892
 						</Button>
 					</Typography>
 

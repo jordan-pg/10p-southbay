@@ -105,7 +105,7 @@ const CustomFormDialog = () => {
 	return (
 		<div>
 			<Button variant="outlined" color="primary" onClick={handleOpen}>
-				Learn More
+				Request Info
 			</Button>
 			<Dialog
 				open={open}
@@ -123,7 +123,7 @@ const CustomFormDialog = () => {
 					},
 				}}
 			>
-				<DialogTitle sx={{ m: 2 }}>
+				<DialogTitle sx={{ m: 2 }} fontWeight="bold">
 					Get More Information About Our Classes!
 					<IconButton
 						onClick={() => handleClose({ reason: CLICK_EXIT })}

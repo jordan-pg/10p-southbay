@@ -4,12 +4,10 @@ import {
 	Typography,
 	Button,
 	Container,
-	Alert,
-	Snackbar,
+	Link,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import BackgroundVideo from "./BackgroundVideo";
-import { ChevronRightRounded } from "@mui/icons-material";
 
 const HeroSection = styled(Box)`
 	text-align: center;
@@ -148,16 +146,13 @@ const Home = () => {
 					Learn world-class jiu-jitsu at 10th Planet South Bay under
 					PJ &quot;Butter Panther&quot; Barch
 				</HeroSubtext>
-				<HeroButton
+				<Button
 					variant="contained"
-					onClick={() =>
-						window.open(
-							"https://cp.mystudio.io/t/?=10PSBAY/10553/32174//1695175182"
-						)
-					}
+					component={Link}
+					href="tel:+16197468892"
 				>
 					TRY A CLASS FOR FREE
-				</HeroButton>
+				</Button>
 				<Box mt={2}>
 					<CustomLink
 						onClick={() =>

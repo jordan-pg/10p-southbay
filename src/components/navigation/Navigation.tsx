@@ -23,7 +23,7 @@ import Schedule from "@/components/embedded/Schedule";
 import { Link } from "react-scroll";
 import Contact from "@/components/contact/Contact";
 import MemberModal from "@/components/memberModal/MemberModal";
-import LeadModal from "../leadModal/LeadModal";
+// import LeadModal from "../leadModal/LeadModal";
 import Levels from "../levels/Levels";
 // import Events from "../embedded/Events";
 
@@ -159,7 +159,7 @@ const Navigation = () => {
 				<Box my={2}>
 					<MemberModal />
 				</Box>
-				<LeadModal />
+				{/* <LeadModal /> */}
 			</List>
 		</Box>
 	);
@@ -248,7 +248,7 @@ const Navigation = () => {
 							<div style={{ marginRight: 10 }}>
 								<MemberModal />
 							</div>
-							<LeadModal />
+							{/* <LeadModal /> */}
 						</Box>
 						<IconButton
 							color="inherit"
